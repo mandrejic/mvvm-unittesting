@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:view="clr-namespace:WpfApp.View"
+        Title="MainWindow" 
+        Width="1024" Height="768"
+        MinWidth="850" MinHeight="500"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction
+                         Command="{Binding AppStartCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Name="MasterGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*" MinWidth="180" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="75*" MinWidth="300" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" />
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns" Width="3" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Border Grid.Column="2" />
+        <view:PersonDirectoryView DataContext="{Binding PersonDirectoryViewModel}" Grid.Column="0" />
+        <view:PersonDetailsView DataContext="{Binding PersonDetailsViewModel}" Grid.Column="2"/>
+    </Grid>
+</Window>
