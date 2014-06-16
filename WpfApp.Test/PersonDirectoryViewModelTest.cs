@@ -14,6 +14,8 @@ namespace WpfApp.Test
 	public class PersonDirectoryViewModelTest : TestBase
 	{
 		PersonDirectoryViewModel viewModel;
+		Action<object> personDirectoryUpdateCallback;
+		Action<Person> personDeletedCallback;
 
 		[TestInitialize]
 		public void TestInitialize()
@@ -31,6 +33,16 @@ namespace WpfApp.Test
 			viewModel = new PersonDirectoryViewModel(personServiceMock.Object, dispatcherMock.Object, aggregatorMock.Object, dialogServiceMock.Object);
 
 			viewModel.RefreshAsync().Wait();
+		}
+
+		private void WhenDirectoryUpdateEventIsReceived()
+		{
+			personDirectoryUpdateCallback.Invoke(null);
+		}
+
+		private void WhenPersonDeletedEventIsReceived(Person person)
+		{
+			personDeletedCallback.Invoke(person);
 		}
 
 		[TestMethod]
@@ -78,6 +90,41 @@ namespace WpfApp.Test
 			viewModel.SelectedPerson = persons[0];
 
 			currentPersonChangeEventMock.Verify(x => x.Publish(It.Is<Person>(p => object.ReferenceEquals(p, persons[0]))), "Selected person change event was published, but person other then selected was sent with it.");
+		}
+
+		[TestMethod]
+		public void PersonDirectoryViewModel_GivenEmptyViewModel_WhenDirectoryUpdateEventIsReceived_PersonDirectoryShouldBeUpdated()
+		{
+			personDirectoryUpdatedEventMock.Setup(
+				x =>
+				x.Subscribe(
+					It.IsAny<Action<object>>(),
+					It.IsAny<ThreadOption>(),
+					It.IsAny<bool>(),
+					It.IsAny<Predicate<object>>()))
+					.Callback<Action<object>, ThreadOption, bool, Predicate<object>>(
+					(e, t, b, a) => personDirectoryUpdateCallback = e);
+
+			GivenEmptyViewModel();
+			WhenDirectoryUpdateEventIsReceived();
+			CollectionAssert.AreEqual(persons, viewModel.PersonDirectory);
+		}
+
+		public void PersonDirectoryViewModel_GivenPersonDirectory_WhenPersonDeletedEventIsReceived_PersonShouldBeRemovedFromDirectory()
+		{
+			personDeletedEventMock.Setup(
+				x =>
+				x.Subscribe(
+				It.IsAny<Action<Person>>(),
+				It.IsAny<ThreadOption>(),
+				It.IsAny<bool>(),
+				It.IsAny<Predicate<object>>()))
+				.Callback<Action<object>, ThreadOption, bool, Predicate<object>>(
+				(e, t, b, a) => personDeletedCallback = e);
+
+			GivenPersonDirectory();
+			WhenPersonDeletedEventIsReceived(persons[0]);
+			CollectionAssert.DoesNotContain(viewModel.PersonDirectory, persons[0]);
 		}
 	}
 }
