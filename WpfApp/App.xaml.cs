@@ -29,7 +29,7 @@ namespace WpfApp
 				IUnityContainer container = new UnityContainer();
 				ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
 
-				container.RegisterType<IDispatcher, DispatcherWrapper>();
+				container.RegisterInstance<IDispatcher>(new DispatcherWrapper());
 				container.RegisterType<IEventAggregator, EventAggregator>();
 				container.RegisterType<IPersonService, PersonService>();
 				container.RegisterType<IWindowViewModelMappings, WindowViewModelMappings>();
