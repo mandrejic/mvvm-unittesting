@@ -40,7 +40,7 @@ namespace WpfApp.ViewModel
 
 		private void OnPersonUpdated()
 		{
-			RaisePropertyChanged("Person");
+			OnPropertyChanged("Person");
 			((DelegateCommand)EditPersonCommand).RaiseCanExecuteChanged();
 			((DelegateCommand)DeletePersonCommand).RaiseCanExecuteChanged();
 		}

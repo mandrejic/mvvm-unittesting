@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Prism.ViewModel;
+﻿using Microsoft.Practices.Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp.Model
 {
-	public class Person : NotificationObject
+	public class Person : BindableBase
 	{
 		int id;
 		public int Id
@@ -34,8 +34,8 @@ namespace WpfApp.Model
 				if (firstName != value)
 				{
 					firstName = value;
-					RaisePropertyChanged("FirstName");
-					RaisePropertyChanged("FullName");
+					OnPropertyChanged("FirstName");
+					OnPropertyChanged("FullName");
 				}
 			}
 		}
@@ -52,8 +52,8 @@ namespace WpfApp.Model
 				if (lastName != value)
 				{
 					lastName = value;
-					RaisePropertyChanged("LastName");
-					RaisePropertyChanged("FullName");
+					OnPropertyChanged("LastName");
+					OnPropertyChanged("FullName");
 				}
 			}
 		}
@@ -70,7 +70,7 @@ namespace WpfApp.Model
 				if (age != value)
 				{
 					age = value;
-					RaisePropertyChanged("Age");
+					OnPropertyChanged("Age");
 				}
 			}
 		}

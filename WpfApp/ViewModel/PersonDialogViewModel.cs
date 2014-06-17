@@ -51,7 +51,7 @@ namespace WpfApp.ViewModel
 				if (this.dialogResult != value)
 				{
 					this.dialogResult = value;
-					this.RaisePropertyChanged("DialogResult");
+					this.OnPropertyChanged("DialogResult");
 				}
 			}
 		}

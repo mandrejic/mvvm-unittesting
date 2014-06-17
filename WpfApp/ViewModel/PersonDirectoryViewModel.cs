@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WpfApp.Data;
 using WpfApp.Events;
@@ -46,7 +47,7 @@ namespace WpfApp.ViewModel
 				if (this.selectedPerson != value)
 				{
 					this.selectedPerson = value;
-					RaisePropertyChanged("SelectedPerson");
+					OnPropertyChanged("SelectedPerson");
 					aggregator.GetEvent<SelectedPersonChangeEvent>().Publish(this.selectedPerson);
 				}
 			}
@@ -59,11 +60,12 @@ namespace WpfApp.ViewModel
 				IsBusy = true;
 				try
 				{
+					var persons = this.personService.GetPersons();
+					var previouslySelectedPerson = selectedPerson;
 					dispatcher.Invoke(() =>
 						{
-							var previouslySelectedPerson = selectedPerson;
 							personDirectory.Clear();
-							personDirectory.AddRange(this.personService.GetPersons());
+							personDirectory.AddRange(persons);
 							if (previouslySelectedPerson != null)
 							{
 								if (personDirectory.Any(p => p.Id == previouslySelectedPerson.Id))

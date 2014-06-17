@@ -5,7 +5,7 @@
         xmlns:view="clr-namespace:WpfApp.View"
         Title="MainWindow" 
         Width="1024" Height="768"
-        MinWidth="850" MinHeight="500"
+        MinWidth="350" MinHeight="300"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <i:Interaction.Triggers>

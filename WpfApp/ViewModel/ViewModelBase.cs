@@ -1,5 +1,5 @@
-﻿using Microsoft.Practices.Prism.PubSubEvents;
-using Microsoft.Practices.Prism.ViewModel;
+﻿using Microsoft.Practices.Prism.Mvvm;
+using Microsoft.Practices.Prism.PubSubEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using WpfApp.Services;
 
 namespace WpfApp.ViewModel
 {
-	public abstract class ViewModelBase : NotificationObject
+	public abstract class ViewModelBase : BindableBase
 	{
 		protected bool isBusy;
 		protected IPersonService personService;
@@ -58,7 +58,7 @@ namespace WpfApp.ViewModel
 			protected set
 			{
 				isBusy = value;
-				this.RaisePropertyChanged("IsBusy");
+				this.OnPropertyChanged("IsBusy");
 
 			}
 		}

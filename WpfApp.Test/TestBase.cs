@@ -75,5 +75,15 @@ namespace WpfApp.Test
 				It.Is<MessageBoxButton>(b => b.Equals(expectedButtons)),
 				It.Is<MessageBoxImage>(i => i.Equals(expectedImage))), Times.Once, failMessage);
 		}
+
+		protected void AssertMessageBoxWasDisplayed(string failMessage)
+		{
+			dialogServiceMock.Verify(x => x.ShowMessageBox(
+				It.IsAny<object>(),
+				It.IsAny<string>(),
+				It.IsAny<string>(),
+				It.IsAny<MessageBoxButton>(),
+				It.IsAny<MessageBoxImage>()), Times.Once, failMessage);
+		}
 	}
 }

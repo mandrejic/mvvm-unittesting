@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="WpfApp.ViewModel.MainWindowViewModel">
+    <Position X="5" Y="5.25" Width="2.25" />
+    <InheritanceLine Type="WpfApp.ViewModel.ViewModelBase" FixedFromPoint="true">
+      <Path>
+        <Point X="6.125" Y="4.191" />
+        <Point X="6.125" Y="5.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PersonDetailsViewModel" />
+      <Property Name="PersonDirectoryViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WpfApp.ViewModel.PersonDetailsViewModel">
+    <Position X="9" Y="5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="WpfApp.ViewModel.ViewModelBase" FixedFromPoint="true">
+      <Path>
+        <Point X="6.125" Y="4.191" />
+        <Point X="6.125" Y="4.625" />
+        <Point X="10.375" Y="4.625" />
+        <Point X="10.375" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AIAIAAAAAAAAAAAAQAAEAAAAAAAEAAAACGQAAAqAAAA=</HashCode>
+      <FileName>ViewModel\PersonDetailsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WpfApp.ViewModel.PersonDialogViewModel">
+    <Position X="12" Y="5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="WpfApp.ViewModel.ViewModelBase" FixedFromPoint="true">
+      <Path>
+        <Point X="6.125" Y="4.191" />
+        <Point X="6.125" Y="4.625" />
+        <Point X="13.375" Y="4.625" />
+        <Point X="13.375" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>EIIAABAAAAAAAEAAAAAAQAAAAAAAAEACAAAAAACAAAA=</HashCode>
+      <FileName>ViewModel\PersonDialogViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WpfApp.ViewModel.PersonDirectoryViewModel">
+    <Position X="0.5" Y="5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="WpfApp.ViewModel.ViewModelBase" FixedFromPoint="true">
+      <Path>
+        <Point X="6.125" Y="4.191" />
+        <Point X="6.125" Y="4.625" />
+        <Point X="2.125" Y="4.625" />
+        <Point X="2.125" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="SelectedPerson" Type="WpfApp.Model.Person" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.562" Y="7.069" />
+        <Point X="3.562" Y="7.444" />
+        <Point X="6.062" Y="7.444" />
+        <Point X="6.062" Y="8.25" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="PersonDirectory" Type="WpfApp.Model.Person" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.688" Y="7.069" />
+        <Point X="1.688" Y="8.516" />
+        <Point X="5.25" Y="8.516" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAICAAAAAgAAAAAAAAAAAAAAAAAAA4=</HashCode>
+      <FileName>ViewModel\PersonDirectoryViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SelectedPerson" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PersonDirectory" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WpfApp.ViewModel.ViewModelBase" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAABABIAAAAAAAAEAAAIBAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dispatcher" />
+      <Field Name="aggregator" />
+      <Field Name="dialogService" />
+      <Field Name="personService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WpfApp.Helpers.RangeEnabledObservableCollection&lt;T&gt;">
+    <Position X="0.5" Y="9" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAA=</HashCode>
+      <FileName>Helpers\RangeEnabledObservableCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp.Model.Person">
+    <Position X="5.25" Y="8.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAABAQIAAAEAAAAAAAAAAAAAAAAAACAAAAgg=</HashCode>
+      <FileName>Model\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="WpfApp.Helpers.IDispatcher">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\IDispatcher.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.Practices.Prism.PubSubEvents.IEventAggregator">
+    <Position X="1.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="WpfApp.Services.IDialogService">
+    <Position X="0.75" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAEAAAAAAAAAAAAgAAEAAAABAAAAAAABAAAAEAA=</HashCode>
+      <FileName>Services\IDialogService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="WpfApp.Data.IPersonService">
+    <Position X="8" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAA=</HashCode>
+      <FileName>Data\IPersonService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
