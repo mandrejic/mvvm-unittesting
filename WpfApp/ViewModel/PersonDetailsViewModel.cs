@@ -26,7 +26,7 @@ namespace WpfApp.ViewModel
 		public PersonDetailsViewModel(IPersonService personService, IDispatcher dispatcher, IEventAggregator aggregator, IDialogService dialogService) 
 			: base(personService, dispatcher, aggregator, dialogService)
 		{
-			aggregator.GetEvent<SelectedPersonChangeEvent>().Subscribe(OnSelectedPersonChanged, ThreadOption.BackgroundThread);
+			aggregator.GetEvent<SelectedPersonChangeEvent>().Subscribe(OnSelectedPersonChanged, ThreadOption.PublisherThread);
 
 			NewPersonCommand = new DelegateCommand(NewPerson);
 			EditPersonCommand = new DelegateCommand(EditPerson, CanEditPerson);
